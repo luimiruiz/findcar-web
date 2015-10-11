@@ -1,0 +1,99 @@
+<div class="container-fluid">
+	<h2 class="page-title">Modelos</h2>
+	<select class="form-control manufacturer-filter" ng-model="searchData.minPrice">
+      <option value="#">Marca</option>
+      <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+    </select>
+	<button data-target="#addModelModal" data-toggle="modal" class="btn btn-primary title-btn">
+		Agregar Modelo
+	</button>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10 mt10">
+			<div class="table-responsive">
+			  <table class="table table-striped table-bordered table-hover">
+			    <tr>
+			    	<th>Id</th>
+			    	<th>Nombre</th>
+			    	<th></th>
+			    	<th></th>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			    <tr>
+			    	<td>1</td>
+			    	<td>Honda</td>
+			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    </tr>
+			  </table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="addModelModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Agregar Modelo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+        	<label for="name">Nombre:</label>
+        	<input type="text" class="form-control" placeholder="Toyota">
+        </div>
+        <div class="form-group">
+        	<label for="manufacturer">Marca:</label>
+        	<select class="form-control" ng-model="searchData.minPrice">
+		      <option value="#">Marca</option>
+		      <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		    </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Agregar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

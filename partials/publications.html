@@ -1,0 +1,169 @@
+<div class="container-fluid publications-container">
+	<div class="row">
+		<div class="col-md-3 search-box">
+			<div class="row">
+				<div class="col-md-12">
+					<select class="form-control" ng-model="searchData.minPrice">
+		              <option value="#">Marca</option>
+		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		            </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<select class="form-control" ng-model="searchData.minPrice">
+		              <option value="#">Modelo</option>
+		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		            </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<select class="form-control" ng-model="searchData.minPrice">
+		              <option value="#">Año Desde</option>
+		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		            </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<select class="form-control" ng-model="searchData.minPrice">
+		              <option value="#">Precio Desde</option>
+		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		            </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<select class="form-control" ng-model="searchData.minPrice">
+		              <option value="#">Precio Hasta</option>
+		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		            </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<select class="form-control" ng-model="searchData.minPrice">
+		              <option value="#">Transimisión</option>
+		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		            </select>
+				</div>
+			</div>
+			<button class="btn btn-primary btn-block">Buscar</button>
+		</div>
+		<div class="col-md-8">
+			<h2 class="page-title">Publicaciones</h2>
+			<a class="btn btn-primary add-btn">Agregar publicacion</a>
+			<div class="row publication">
+				<div class="col-md-4">
+					<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=FindCarApp&w=200&h=200">
+				</div>
+				<div class="col-md-8 publication-data">
+					<div class="row">
+						<div class="col-md-6">
+							<b>Marca:</b>
+							<span>Honda</span>
+						</div>
+						<div class="col-md-6">
+							<b>Combustible:</b>
+							<span>Gasoil</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<b>Modelo:</b>
+							<span>CRV</span>
+						</div>
+						<div class="col-md-6">
+							<b>Transmisión:</b>
+							<span>Autmoatica</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<b>Año:</b>
+							<span>2013</span>
+						</div>
+						<div class="col-md-6">
+							<b>Color:</b>
+							<span>Negro</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<b>Precio:</b>
+							<span>RD$ 500,000.00</span>
+						</div>
+						<div class="col-md-6">
+							<b>Kilometros:</b>
+							<span>55,000</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+						</div>
+						<div class="col-md-6">
+							<button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row publication">
+				<div class="col-md-4">
+					<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=FindCarApp&w=200&h=200">
+				</div>
+				<div class="col-md-8 publication-data">
+					<div class="row">
+						<div class="col-md-6">
+							<b>Marca:</b>
+							<span>Honda</span>
+						</div>
+						<div class="col-md-6">
+							<b>Combustible:</b>
+							<span>Gasoil</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<b>Modelo:</b>
+							<span>CRV</span>
+						</div>
+						<div class="col-md-6">
+							<b>Transmisión:</b>
+							<span>Autmoatica</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<b>Año:</b>
+							<span>2013</span>
+						</div>
+						<div class="col-md-6">
+							<b>Color:</b>
+							<span>Negro</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<b>Precio:</b>
+							<span>RD$ 500,000.00</span>
+						</div>
+						<div class="col-md-6">
+							<b>Kilometros:</b>
+							<span>55,000</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+						</div>
+						<div class="col-md-6">
+							<button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

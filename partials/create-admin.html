@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div class="box col-md-4 col-md-offset-4">
+		<h4>Nueva Cuenta de Usuario</h4>
+		<form action="/user/create" method="POST" data-toggle="validator">
+			<div class="form-group">
+				<label for="username">Cuenta de Usuario</label>
+				<input type="text" data-minlength="5" class="form-control" name="username" id="username" placeholder="Cuenta de Acceso del Usuario" data-error="La cuenta de usuario solo permite caracteres alfanumericos y raya baja." data-fv-regexp-regexp="^[\w]*$" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail">Correo Electronico</label>
+				<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Correo Electronico del Usuario" data-error="El correo electronico no valido." required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword">Clave de Acceso</label>
+				<input type="password" data-minlength="8" class="form-control" name="password" id="inputPassword" placeholder="Clave" required>
+			</div>
+			<div class="form-group">
+				<label for="inputPasswordConfirm">Confirmar Clave</label>
+				<input type="password" class="form-control" name="passwordConfirm" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Las claves de acceso no son identicas." placeholder="Repetir Clave" required>
+				<div class="help-block with-errors"></div>
+				<input type="hidden" name="_csrf" value="<%= _csrf%>">
+			</div>
+			<div class="form-group">
+				<label for="isAdmin">Es administrador? <input type="checkbox" value="true" name="isAdmin" id="isAdmin"></label>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block" value="New User Account">Agregar</button>
+		</form>
+	</div>
+</div>
