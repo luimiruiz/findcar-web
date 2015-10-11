@@ -1,0 +1,28 @@
+{
+  "name": "findcar-web",
+  "version": "0.0.1",
+  "homepage": "https://github.com/luimiruiz/findcar-web",
+  "authors": [
+    "luimiruiz <luimiruiz@gmail.com>"
+  ],
+  "description": "Web App for the course of advanced web development",
+  "keywords": [
+    "web",
+    "angularjs",
+    "findcar",
+    "cars"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angularjs": "~1.4.7",
+    "angular-ui-router": "~0.2.15"
+  }
+}
