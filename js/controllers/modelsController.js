@@ -117,11 +117,13 @@ angular.module('findCarApp').controller('modelsController',['$scope','model', 'm
 	$scope.modelSubmit = function(){
 		if(!$scope.auxModel.name){
 			$scope.modalData.nameErrors = ['Este campo es requerido'];
+			return;
 		}else{
 			$scope.modalData.nameErrors = [];
 		}
 		if($scope.auxModel.manufacturerId == '#'){
 			$scope.modalData.manufacturerErrors = ['Este campo es requerido'];
+			return;
 		}else{
 			$scope.modalData.manufacturerErrors = [];
 		}

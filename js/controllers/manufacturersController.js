@@ -97,13 +97,13 @@ angular.module('findCarApp').controller('manufacturersController',['$scope', 'ma
 	$scope.manufacturerSubmit = function(){
 		if(!$scope.auxManufacturer.name){
 			$scope.modalData.errors = ['Este campo es requerido'];
+			return;
 		}else{
 			$scope.modalData.errors = [];
 		}
 		if($scope.modalData.action == "Agregar"){
 			return $scope.addManufacturer();
 		}
-		console.log(1);
 		return $scope.editManufacturer();
 	}
 

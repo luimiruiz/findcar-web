@@ -3,7 +3,7 @@ angular.module('findCarApp',['ui.router', 'ngResource', 'flash', 'ngCookies'])
   $rootScope.$on('$stateChangeStart', 
   	function (event, next, nextParams, fromState) {
   		console.log(next);
-    	if(!auth.checkUserLogin() && next.name != 'login'){
+    	if(!auth.checkUserLogin() && next.name != 'login' && next.name != 'create-user'){
     		event.preventDefault();
     		$state.go('login');
     	}else if(auth.checkUserLogin() && next.name == 'login'){
