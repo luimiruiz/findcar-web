@@ -1,11 +1,11 @@
-angular.module('FindCarApp').config(function($stateProvider, $urlRouterProvider){
+angular.module('findCarApp').config(function($stateProvider, $urlRouterProvider){
   $stateProvider
    .state('login',{
     url: '/login',
     views: {
       'content' : {
           templateUrl: 'partials/login.html',
-          controller: 'LoginController'
+          controller: 'loginController'
       }
     }
   })
@@ -17,7 +17,7 @@ angular.module('FindCarApp').config(function($stateProvider, $urlRouterProvider)
       },
       'content': {
           templateUrl: 'partials/publications.html',
-          controller: 'PublicationsController'
+          controller: 'publicationsController'
       }
     }
   })
@@ -26,7 +26,7 @@ angular.module('FindCarApp').config(function($stateProvider, $urlRouterProvider)
     views: {
       'content': {
           templateUrl: 'partials/manufacturers.html',
-          controller: 'ManufacturersController'
+          controller: 'manufacturersController'
       },
       'header': {
         templateUrl: 'partials/menu.html'
@@ -38,7 +38,7 @@ angular.module('FindCarApp').config(function($stateProvider, $urlRouterProvider)
     views: {
       'content': {
           templateUrl: 'partials/models.html',
-          controller: 'ModelsController'
+          controller: 'modelsController'
       },
       'header': {
         templateUrl: 'partials/menu.html'
@@ -50,7 +50,7 @@ angular.module('FindCarApp').config(function($stateProvider, $urlRouterProvider)
     views: {
       'content': {
           templateUrl: 'partials/create-user.html',
-          controller: 'UsersController'
+          controller: 'usersController'
       }
     }
   })
@@ -59,7 +59,7 @@ angular.module('FindCarApp').config(function($stateProvider, $urlRouterProvider)
     views: {
       'content': {
           templateUrl: 'partials/create-admin.html',
-          controller: 'AdminsController'
+          controller: 'adminsController'
       },
       'header': {
         templateUrl: 'partials/menu.html'
