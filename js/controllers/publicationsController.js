@@ -4,6 +4,14 @@ angular.module('findCarApp').controller('publicationsController',['$scope',funct
 	$scope.auxPublication = {};
 
 	/**
+	 * Function executed when a manufacturer is changed
+	 * @param id Id of the selected manufacturer
+	 */
+	$scope.changeManufacturer = function(id){
+
+	}
+
+	/**
 	 * Function to search new publications
 	 */
 	$scope.searchPublications = function(){

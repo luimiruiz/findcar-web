@@ -1,17 +1,14 @@
 <h1>FindCar App</h1>
 <div class="container box login-box" id="login-box">
-  <form action="/login" method="POST" data-toggle="validator">
-    <input type='hidden' name='_csrf' value='<%= _csrf %>'>
-    <div class="form-group">
-      <label>Usuario</label>
-      <input type="text" class="form-control" name="username" data-minlength="5" data-fv-regexp-regexp="^[\w]*$" data-error="La cuenta de usuario solo permite caracteres alfanumericos y raya baja." required>
-      <div class="help-block with-errors"></div>
-    </div>
-    <div class="form-group">
-      <label>Contraseña</label>
-      <input type="password" class="form-control" name="password" required>
-    </div>
-    <a ui-sref="create-user" class="pull-left mt10">Crear cuenta</a>
-    <button type="submit" class="btn btn-primary pull-right">Ingresar</button>
-  </form>
+  <div class="form-group">
+    <label>Usuario</label>
+    <input type="text" class="form-control" ng-model="username">
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+    <label>Contraseña</label>
+    <input type="password" ng-model="password" class="form-control">
+  </div>
+  <a ui-sref="create-user" class="pull-left mt10">Crear cuenta</a>
+  <button type="button" ng-click="login()" class="btn btn-primary pull-right">Ingresar</button>
 </div>

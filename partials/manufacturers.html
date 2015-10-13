@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<h2 class="page-title">Marcas</h2>
-	<button data-target="#addManufacturerModal" data-toggle="modal" class="btn btn-primary title-btn">
+	<button ng-click="showAddManufacturer()" class="btn btn-primary title-btn">
 		Agregar Marca
 	</button>
 	<div class="row">
@@ -13,75 +13,40 @@
 			    	<th></th>
 			    	<th></th>
 			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    <tr ng-repeat="manufacturer in manufacturers track by $index">
+			    	<td>{{manufacturer.id}}</td>
+			    	<td>{{manufacturer.name}}</td>
+			    	<td><a ng-click="showEditManufacturer($index)" href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a ng-click="deleteManufacturer($index)" href><span class="glyphicon glyphicon-trash"></span></a></td>
 			    </tr>
 			  </table>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="addManufacturerModal">
+<div class="modal fade" id="manufacturerModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Agregar Modelo</h4>
+        <h4 class="modal-title">{{modalData.action}} Marca</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
         	<label for="name">Nombre:</label>
-        	<input type="text" class="form-control" placeholder="Toyota">
+        	<input type="text" class="form-control" ng-model="auxManufacturer.name" placeholder="Toyota" required>
+        	<span class="error">
+        		<ul>
+        			<li ng-repeat="error in modalData.errors">
+        				{{error}}
+        			</li>
+        		</ul>
+        	</span>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-primary" ng-click="manufacturerSubmit()">{{modalData.action}}</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

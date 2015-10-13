@@ -1,10 +1,10 @@
 <div class="container-fluid">
 	<h2 class="page-title">Modelos</h2>
-	<select class="form-control manufacturer-filter" ng-model="searchData.minPrice">
-      <option value="#">Marca</option>
-      <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+	<select class="form-control manufacturer-filter" ng-model="selectedManufacturer" ng-change="changeManufacturer()">
+      <option value="#" selected="selected">Marca</option>
+      <option value="{{manufacturer.id}}" ng-repeat="manufacturer in manufacturers">{{manufacturer.name}}</option>
     </select>
-	<button data-target="#addModelModal" data-toggle="modal" class="btn btn-primary title-btn">
+	<button ng-click="showAddModel()" class="btn btn-primary title-btn">
 		Agregar Modelo
 	</button>
 	<div class="row">
@@ -17,82 +17,54 @@
 			    	<th></th>
 			    	<th></th>
 			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
-			    </tr>
-			    <tr>
-			    	<td>1</td>
-			    	<td>Honda</td>
-			    	<td><a href><span class="glyphicon glyphicon-pencil"></span></a></td>
-			    	<td><a href><span class="glyphicon glyphicon-trash"></span></a></td>
+			    <tr ng-repeat="model in models track by $index">
+			    	<td>{{model.id}}</td>
+			    	<td>{{model.name}}</td>
+			    	<td><a ng-click="showEditModel($index)" href><span class="glyphicon glyphicon-pencil"></span></a></td>
+			    	<td><a ng-click="deleteModel($index)" href><span class="glyphicon glyphicon-trash"></span></a></td>
 			    </tr>
 			  </table>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="addModelModal">
+<div class="modal fade" id="modelModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Agregar Modelo</h4>
+        <h4 class="modal-title">{{modalData.action}} Modelo</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
         	<label for="name">Nombre:</label>
-        	<input type="text" class="form-control" placeholder="Toyota">
+        	<input type="text" class="form-control" ng-model="auxModel.name" placeholder="Corolla">
+        	<span class="error">
+        		<ul>
+        			<li ng-repeat="error in modalData.nameErrors">
+        				{{error}}
+        			</li>
+        		</ul>
+        	</span>
         </div>
         <div class="form-group">
         	<label for="manufacturer">Marca:</label>
-        	<select class="form-control" ng-model="searchData.minPrice">
+        	<select class="form-control" ng-model="auxModel.manufacturerId">
 		      <option value="#">Marca</option>
-		      <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		      <option value="{{manufacturer.id}}" ng-repeat="manufacturer in manufacturers">{{manufacturer.name}}</option>
 		    </select>
+		    <span class="error">
+        		<ul>
+        			<li ng-repeat="error in modalData.manufacturerErrors">
+        				{{error}}
+        			</li>
+        		</ul>
+        	</span>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-primary" ng-click="modelSubmit()">{{modalData.action}}</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
