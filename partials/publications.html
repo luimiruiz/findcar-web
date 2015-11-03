@@ -3,163 +3,101 @@
 		<div class="col-md-3 search-box">
 			<div class="row">
 				<div class="col-md-12">
-					<select class="form-control" ng-model="searchData.minPrice">
+					<select class="form-control" ng-change="changeManufacturer()" ng-model="searchParams.manufacturer">
 		              <option value="#">Marca</option>
-		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		              <option ng-repeat="manufacturer in manufacturers" value="{{manufacturer.id}}">{{manufacturer.name}}</option>
 		            </select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<select class="form-control" ng-model="searchData.minPrice">
+					<select class="form-control" ng-model="searchParams.model">
 		              <option value="#">Modelo</option>
-		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		              <option ng-repeat="model in models" value="{{model.id}}">{{model.name}}</option>
 		            </select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<select class="form-control" ng-model="searchData.minPrice">
+					<select class="form-control" ng-model="searchParams.minYear">
 		              <option value="#">Año Desde</option>
-		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		              <option ng-repeat="year in years" value="{{year}}">{{year}}</option></option>
 		            </select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<select class="form-control" ng-model="searchData.minPrice">
+					<select class="form-control" ng-model="searchParams.minPrice">
 		              <option value="#">Precio Desde</option>
-		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		              <option ng-repeat="money in moneyAmmounts" value="{{money}}">{{money | currency : 'RD$ '}}</option></option>
 		            </select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<select class="form-control" ng-model="searchData.minPrice">
+					<select class="form-control" ng-model="searchParams.maxPrice">
 		              <option value="#">Precio Hasta</option>
-		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		              <option ng-repeat="money in moneyAmmounts" value="{{money}}">{{money | currency : 'RD$ '}}</option></option>
 		            </select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<select class="form-control" ng-model="searchData.minPrice">
+					<select class="form-control" ng-model="searchParams.transmision">
 		              <option value="#">Transimisión</option>
-		              <option ng-repeat="minPrice in minPrices[searchData.currency]" value="{{minPrice.value}}">{{minPrice.label}}</option>
+		              <option ng-repeat="transmision in transmisions" value="{{transmision.id}}">{{transmision.name}}</option>
 		            </select>
 				</div>
 			</div>
-			<button class="btn btn-primary btn-block">Buscar</button>
+			<button class="btn btn-primary btn-block" ng-click="searchPublications(false)">Buscar</button>
 		</div>
 		<div class="col-md-8">
 			<h2 class="page-title">Publicaciones</h2>
-			<a class="btn btn-primary add-btn">Agregar publicacion</a>
-			<div class="row publication">
-				<div class="col-md-4">
-					<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=FindCarApp&w=200&h=200">
-				</div>
-				<div class="col-md-8 publication-data">
-					<div class="row">
-						<div class="col-md-6">
-							<b>Marca:</b>
-							<span>Honda</span>
-						</div>
-						<div class="col-md-6">
-							<b>Combustible:</b>
-							<span>Gasoil</span>
-						</div>
+			<div class="publications" infinite-scroll="loadMore()" infinite-scroll-distance="2">
+				<div class="row publication"  ng-repeat="publication in publications">
+					<div class="col-md-4">
+						<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=FindCarApp&w=200&h=200">
 					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<b>Modelo:</b>
-							<span>CRV</span>
+					<div class="col-md-8 publication-data">
+						<div class="row">
+							<div class="col-md-6">
+								<b>Marca:</b>
+								<span>{{publication.ManufacturerId}}</span>
+							</div>
+							<div class="col-md-6">
+								<b>Combustible:</b>
+								<span>{{publication.combustible}}</span>
+							</div>
 						</div>
-						<div class="col-md-6">
-							<b>Transmisión:</b>
-							<span>Autmoatica</span>
+						<div class="row">
+							<div class="col-md-6">
+								<b>Modelo:</b>
+								<span>{{publication.ModelId}}</span>
+							</div>
+							<div class="col-md-6">
+								<b>Transmisión:</b>
+								<span>{{publication.transmision}}</span>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<b>Año:</b>
-							<span>2013</span>
+						<div class="row">
+							<div class="col-md-6">
+								<b>Año:</b>
+								<span>{{publication.year}}</span>
+							</div>
+							<div class="col-md-6">
+								<b>Color:</b>
+								<span>{{publication.ColorId}}</span>
+							</div>
 						</div>
-						<div class="col-md-6">
-							<b>Color:</b>
-							<span>Negro</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<b>Precio:</b>
-							<span>RD$ 500,000.00</span>
-						</div>
-						<div class="col-md-6">
-							<b>Kilometros:</b>
-							<span>55,000</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
-						</div>
-						<div class="col-md-6">
-							<button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row publication">
-				<div class="col-md-4">
-					<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=FindCarApp&w=200&h=200">
-				</div>
-				<div class="col-md-8 publication-data">
-					<div class="row">
-						<div class="col-md-6">
-							<b>Marca:</b>
-							<span>Honda</span>
-						</div>
-						<div class="col-md-6">
-							<b>Combustible:</b>
-							<span>Gasoil</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<b>Modelo:</b>
-							<span>CRV</span>
-						</div>
-						<div class="col-md-6">
-							<b>Transmisión:</b>
-							<span>Autmoatica</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<b>Año:</b>
-							<span>2013</span>
-						</div>
-						<div class="col-md-6">
-							<b>Color:</b>
-							<span>Negro</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<b>Precio:</b>
-							<span>RD$ 500,000.00</span>
-						</div>
-						<div class="col-md-6">
-							<b>Kilometros:</b>
-							<span>55,000</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
-						</div>
-						<div class="col-md-6">
-							<button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+						<div class="row">
+							<div class="col-md-6">
+								<b>Precio:</b>
+								<span>{{publication.price | currency : 'RD$ '}}</span>
+							</div>
+							<div class="col-md-6">
+								<b>Kilometros:</b>
+								<span>{{publication.km | number}}</span>
+							</div>
 						</div>
 					</div>
 				</div>

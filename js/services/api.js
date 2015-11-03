@@ -1,5 +1,5 @@
 angular.module('findCarApp').factory('api', function($resource) {
-  apiUrl = 'http://localhost:8080';
+  apiUrl = 'http://159.203.138.159:3000';
   return {
     User: $resource(apiUrl+ '/users',{}, {
       create: {
@@ -69,19 +69,6 @@ angular.module('findCarApp').factory('api', function($resource) {
       }
     }),
     Publication: $resource(apiUrl+ '/cars',{} ,{
-      create: {
-        method: 'POST',
-        headers: [{'Content-Type': 'application/json'}]
-      },
-      edit: {
-        method: 'PUT',
-        headers: [{'Content-Type': 'application/json'}]
-      },
-      delete: {
-        method: 'DELETE',
-        url: apiUrl + '/cars/:id',
-        headers: [{'Content-Type': 'application/json'}]
-      },
       search: {
         method: 'GET'
       }

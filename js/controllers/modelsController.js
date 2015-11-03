@@ -143,6 +143,8 @@ angular.module('findCarApp').controller('modelsController',['$scope','model', 'm
 	 * Function to handle the change of a manufacturer
 	 */
 	$scope.changeManufacturer = function(){
+		if($scope.selectedManufacturer == "#")
+			return;
 		model.getAll($scope.selectedManufacturer,function(response){
 			if(!response.error){
 				$scope.models = response.data;
