@@ -41,28 +41,20 @@
 		            </select>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<select class="form-control" ng-model="searchParams.transmision">
-		              <option value="#">Transimisión</option>
-		              <option ng-repeat="transmision in transmisions" value="{{transmision.id}}">{{transmision.name}}</option>
-		            </select>
-				</div>
-			</div>
-			<button class="btn btn-primary btn-block" ng-click="searchPublications(false)">Buscar</button>
+			<button class="btn btn-primary btn-block" ng-click="searchPublications(1)">Buscar</button>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8" ng-if="publications.length">
 			<h2 class="page-title">Publicaciones</h2>
-			<div class="publications" infinite-scroll="loadMore()" infinite-scroll-distance="2">
+			<div class="publications">
 				<div class="row publication"  ng-repeat="publication in publications">
 					<div class="col-md-4">
-						<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=FindCarApp&w=200&h=200">
+						<img ng-src="http://159.203.138.159:3000/{{publication.images[0].imagepath}}" width="200px" height="200px">
 					</div>
 					<div class="col-md-8 publication-data">
 						<div class="row">
 							<div class="col-md-6">
 								<b>Marca:</b>
-								<span>{{publication.ManufacturerId}}</span>
+								<span>{{publication.Manufacturer.name}}</span>
 							</div>
 							<div class="col-md-6">
 								<b>Combustible:</b>
@@ -72,7 +64,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<b>Modelo:</b>
-								<span>{{publication.ModelId}}</span>
+								<span>{{publication.Model.name}}</span>
 							</div>
 							<div class="col-md-6">
 								<b>Transmisión:</b>
@@ -86,7 +78,7 @@
 							</div>
 							<div class="col-md-6">
 								<b>Color:</b>
-								<span>{{publication.ColorId}}</span>
+								<span>{{publication.Color.name}}</span>
 							</div>
 						</div>
 						<div class="row">
@@ -102,6 +94,22 @@
 					</div>
 				</div>
 			</div>
+			<div class="pagination">
+				<ul>
+					<li ng-if="searchParams.page > 1">
+						<a class="btn" ng-click="searchPublications(searchParams.page-1)">«</a>
+					</li>
+					<li ng-repeat="n in totalPages track by $index">
+						<a class="btn" ng-class="{'btn-primary':searchParams.page==$index+1}" ng-click="searchPublications($index+1)">{{$index + 1}}</a>
+					</li>
+					<li ng-if="searchParams.page < totalPages.length">
+						<a class="btn" ng-click="searchPublications(searchParams.page+1)">»</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="no-results" ng-if="!publications.length">
+			No se han encontrado resultados!
 		</div>
 	</div>
 </div>

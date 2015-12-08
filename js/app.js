@@ -1,4 +1,4 @@
-angular.module('findCarApp',['ui.router', 'ngResource', 'flash', 'ngCookies', 'infinite-scroll'])
+angular.module('findCarApp',['ui.router', 'ngResource', 'flash', 'ngCookies'])
 .run(function ($rootScope, $state, auth) {
   $rootScope.$on('$stateChangeStart', 
   	function (event, next, nextParams, fromState) {

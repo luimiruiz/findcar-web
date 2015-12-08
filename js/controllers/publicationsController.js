@@ -6,11 +6,9 @@ angular.module('findCarApp').controller('publicationsController',['$scope', 'man
 		minYear: '#',
 		model: '#',
 		manufacturer: '#',
-		transmision: '#',
-		page:1
+		page:1,
+		offset: 20
 	};
-
-	$scope.morePages = true;
 
 	$scope.years = [];
 
@@ -23,17 +21,6 @@ angular.module('findCarApp').controller('publicationsController',['$scope', 'man
 	for(i = 50000; i <= 10000000; i+= 50000){
 		$scope.moneyAmmounts.push(i);
 	}
-
-	$scope.transmisions = [
-		{
-			id: 1,
-			name: 'Transmisión Automatica'
-		},
-		{
-			id: 2,
-			name: 'Transmisión Manual'
-		}
-	];
 
 	$scope.manufacturers = [];
 
@@ -59,28 +46,18 @@ angular.module('findCarApp').controller('publicationsController',['$scope', 'man
 	/**
 	 * Function to search new publications
 	 */
-	$scope.searchPublications = function(append){
+	$scope.searchPublications = function(page){
+		$scope.searchParams.page = page;
 		publication.searchPublications($scope.searchParams, function(response){
-			if(!response.error){
-				if(append){
-					if(response.data.length == 0){
-						$scope.morePages  = false; 
-					}
-					$scope.publications.concat(response.data);
-				}else{
-					$scope.publications = response.data;
-				}
+			if(response.error){
+				console.log(response.data);
+				$scope.pagesCount = response.message;
+				$scope.totalPages = new Array(Math.ceil($scope.pagesCount/$scope.searchParams.offset));
+				$scope.publications = angular.copy(response.data);
 			}
 		});
 	}
 
-	$scope.searchPublications(false);
+	$scope.searchPublications(1);
 
-	$scope.loadMore = function(){
-		if(!$scope.morePages){
-			return;
-		}
-		$scope.searchParams.page++;
-		$scope.searchPublications(true);
-	}
 }]);
