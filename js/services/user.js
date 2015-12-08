@@ -7,7 +7,6 @@ angular.module('findCarApp').service('user',['api', function(api){
   	 * @param errorCb   Function to execute in case of error
   	 */
 	this.createAdmin = function(adminData, successCb, errorCb){
-    console.log(1);
     api.Admin.create(adminData, successCb, errorCb);
 	}
 

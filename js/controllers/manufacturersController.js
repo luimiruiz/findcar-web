@@ -51,7 +51,6 @@ angular.module('findCarApp').controller('manufacturersController',['$scope', 'ma
 		$scope.modalData.errors = [];
 		$scope.modalData.action = "Editar";
 		$scope.auxManufacturer = angular.copy($scope.manufacturers[index]);
-		console.log($scope.auxManufacturer);
 		jQuery('#manufacturerModal').modal('show');
 	}
 
