@@ -2,17 +2,22 @@ angular.module('findCarApp').service('auth',['api', '$cookies', '$http' ,functio
     
   /**
    * Function to handle user login
-   * @param username  Username of the user
-   * @param password  Password of the user
-   * @param successCb Function to execute in case of success
-   * @param errorCb   Function to execute in case of error
+   * @param username   Username of the user
+   * @param password   Password of the user
+   * @param successCb  Function to execute in case of success
+   * @param errorCb    Function to execute in case of error
+   * @param notAdminCb Function to execute in case that the user is not admin
    */
-  this.login = function(username, password, successCb, errorCb){
+  this.login = function(username, password, successCb, errorCb, notAdminCb){
     var setHeader = this.setHeader;
     api.Auth.login({userName: username, password: password} ,function(response){
-       $cookies.put('x-access-token', response.data.token);
-       setHeader();
-       successCb();
+      if(response.data.isAdmin){
+        $cookies.put('x-access-token', response.data.token);
+        setHeader();
+        successCb();
+      }else{
+        notAdminCb();
+      }
     },errorCb);
   }
 

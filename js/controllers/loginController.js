@@ -10,6 +10,12 @@ angular.module('findCarApp').controller('loginController',['$scope', 'auth', 'Fl
 		},
 		function(error){
 			Flash.create('danger', error.data.message);
+		},
+		function(){
+			$state.go('login');
+			$scope.username = '';
+			$scope.password = '';
+			Flash.create('danger', 'This site is only for administrators');	
 		})
 	}
 
