@@ -49,8 +49,7 @@ angular.module('findCarApp').controller('publicationsController',['$scope', 'man
 	$scope.searchPublications = function(page){
 		$scope.searchParams.page = page;
 		publication.searchPublications($scope.searchParams, function(response){
-			if(response.error){
-				console.log(response.data);
+			if(!response.error){
 				$scope.pagesCount = response.message;
 				$scope.totalPages = new Array(Math.ceil($scope.pagesCount/$scope.searchParams.offset));
 				$scope.publications = angular.copy(response.data);
